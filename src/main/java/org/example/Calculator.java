@@ -51,7 +51,6 @@ public class Calculator {
                     stack.push(expression.charAt(i));
                     break;
             }
-            
         }
         while (!stack.empty()) {
             stringOfNumbers.append(stack.pop());
@@ -107,14 +106,10 @@ public class Calculator {
         int result = 0;
         switch (operator) {
             case '*':
-                result = 3;
-                break;
             case '/':
                 result = 3;
                 break;
             case '+':
-                result = 2;
-                break;
             case '-':
                 result = 2;
                 break;
