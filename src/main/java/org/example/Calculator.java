@@ -4,15 +4,16 @@ import java.util.function.DoubleBinaryOperator;
 
 public class Calculator {
 
-    public double decide (String expression) throws IllegalArgumentException {
+    public double initCalculate (String expression) throws IllegalArgumentException {
         Validator validator = new Validator();
         var redoneExpression = addZeroForMinus(expression);
 
         if (!validator.checkForCorrectSymbols(expression))
-            throw new IllegalArgumentException("Выражение содержит недопустимые символы.");
+            throw new IllegalArgumentException("The expression contains invalid characters.");
 
         if (!validator.checkForBalancedBrackets(expression))
-            throw new IllegalArgumentException("Передано некорректное выражение, нарушен контроль скобок.");
+            throw new IllegalArgumentException("An incorrect expression was passed, " +
+                    "the balance of brackets was broken.");
 
         return reversePolishNotationToResult(expToReversePolishNotation(redoneExpression));
     }
@@ -59,7 +60,7 @@ public class Calculator {
     }
 
     private double reversePolishNotationToResult(String notation) {
-        DoubleBinaryOperator add = (a, b) -> a + b;
+        DoubleBinaryOperator add = Double::sum;
         DoubleBinaryOperator subtract = (a, b) -> a - b;
         DoubleBinaryOperator multiply = (a, b) -> a * b;
         DoubleBinaryOperator divide = (a, b) -> a / b;
