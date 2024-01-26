@@ -17,7 +17,7 @@ public class Calculator {
 
         return reversePolishNotationToResult(expToReversePolishNotation(redoneExpression));
     }
-    private String expToReversePolishNotation(String expression) {
+    String expToReversePolishNotation(String expression) {
         StringBuilder stringOfNumbers = new StringBuilder();
         Stack<Character> stack = new Stack<>();
         int priority;
@@ -58,7 +58,7 @@ public class Calculator {
         return stringOfNumbers.toString();
     }
 
-    private double reversePolishNotationToResult(String notation) {
+    double reversePolishNotationToResult(String notation) {
         DoubleBinaryOperator add = Double::sum;
         DoubleBinaryOperator subtract = (a, b) -> a - b;
         DoubleBinaryOperator multiply = (a, b) -> a * b;
@@ -123,7 +123,7 @@ public class Calculator {
         return result;
     }
 
-    private String addZeroForMinus(String expression) {
+    String addZeroForMinus(String expression) {
         StringBuilder redoneExpression = new StringBuilder();
         for (int token = 0; token < expression.length(); token++) {
             char symbol = expression.charAt(token);
